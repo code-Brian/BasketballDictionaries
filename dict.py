@@ -43,7 +43,7 @@ players = [
 
 
 class Player:
-    # created an empty list to store our intances of Player objects.
+    # ! Class Attribute created an empty list to store our intances of Player objects.
     player_instances = []
 
     def __init__(self, dict):
@@ -51,14 +51,13 @@ class Player:
         self.age = dict["age"]
         self.position = dict["position"]
         self.team = dict["team"]
-        Player.player_instances.append(self)
 
     @classmethod
-    def show_instances(cls):
-        for i in range(0,len(cls.player_instances)):
-            print(i.dict["name"])
-        return cls
-
+    def get_team(cls,team_list):
+        new_team = []
+        for cls.team in team_list:
+            new_team.append(Player(cls.team))
+        return new_team
 kd = Player(players[0])
 jasonT = Player(players[1])
 kyrieI = Player(players[2])
@@ -67,7 +66,11 @@ players_iterated = []
 for dict in players:
     players_iterated.append(Player(dict))
 
-print(players_iterated)
+# print(players_iterated)
 
-for i in players_iterated:
-    print(i.name)
+# for i in players_iterated:
+#     print(i.name)
+
+team = Player.get_team(players)
+for i in range(0,len(team)):
+    print(team[i].name)
